@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#43141C">
+<title>Kareem Emad | Senior Flutter & Full-Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#43141C; --wine-2:#4E1C25; --wine-dark:#300E14;
+    --gold:#E8C15F; --cream:#FAF7F0; --white:#fff; --line:rgba(232,193,95,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"DM Sans",Arial,sans-serif;background:var(--wine);color:var(--white);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px}
+  h1,h2,h3,.num{font-family:"Playfair Display",Georgia,serif;font-weight:700;line-height:1.05}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(67,20,28,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .container{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+  .logo{width:40px;height:40px;background:var(--gold);color:var(--wine);display:grid;place-items:center;font-family:"Playfair Display",serif;font-weight:800}
+  .links{display:flex;gap:30px}
+  .links a{font-weight:700;padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
+  .links a:hover,.links a.active{color:var(--gold);border-color:var(--gold)}
+  .menu-btn{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
+
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:6px;font-weight:700;transition:.2s}
+  .btn-gold{background:var(--gold);color:var(--wine);box-shadow:0 10px 25px rgba(0,0,0,.25)}
+  .btn-gold:hover{transform:translateY(-2px)}
+  .btn-outline{border:1px solid var(--gold);color:var(--gold)}
+  .btn-outline:hover{background:var(--gold);color:var(--wine)}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px}
+  .hero .container{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;margin-bottom:28px}
+  .eyebrow::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold)}
+  .hero h1{font-size:clamp(56px,9vw,118px)}
+  .hero h1 span{color:var(--gold);display:block}
+  .role{font-size:20px;font-weight:700;margin:26px 0 18px}
+  .role span{color:var(--gold)}
+  .hero p.lead{font-size:19px;max-width:560px;opacity:.95;margin-bottom:32px}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+  .photo-wrap{position:relative;padding:12px;border:1px solid var(--gold);max-width:300px;margin-left:auto}
+  .photo-wrap::before{content:"";position:absolute;inset:-12px 20px 20px -12px;border:1px solid var(--line);z-index:-1}
+  .photo{aspect-ratio:4/5;background-position:center 20%;background:var(--wine-2) center/cover no-repeat;display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:80px;color:var(--gold)}
+  .photo-tags{display:flex;justify-content:space-between;max-width:300px;margin:18px 0 0 auto;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--gold)}
+
+  /* ABOUT (light) */
+  .light{background:var(--cream);color:var(--wine)}
+  section.pad{padding:120px 0}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+  .big{font-size:clamp(44px,6vw,86px)}
+  .about p{margin-bottom:16px;font-size:16.5px}
+  .skills{display:grid;grid-template-columns:1fr 2fr;gap:50px;margin-top:100px}
+  .skills h3{font-size:30px;margin-bottom:8px}
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+  .skill-grid li{list-style:none;padding:14px 10px;border-bottom:1px solid rgba(67,20,28,.12);font-weight:700;font-size:15px}
+  .skill-grid li::before{content:"•";margin-right:10px}
+
+  /* PROJECTS */
+  .projects{background:var(--wine-dark)}
+  .projects .big{color:var(--gold)}
+  .projects .intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:60px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{background:var(--white);color:var(--wine);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+  .card .num{background:var(--wine);color:var(--gold);font-size:70px;padding:30px 26px 10px}
+  .card .body{padding:32px 40px;display:flex;flex-direction:column;flex:1}
+  .card.wide{grid-column:1/-1;display:grid;grid-template-columns:300px 1fr}
+  .card.wide .num{display:grid;place-items:center;font-size:84px}
+  .card h3{font-size:clamp(28px,3vw,42px);margin-bottom:16px}
+  .card p{font-size:16px;margin-bottom:20px}
+  .card ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .card li{border:1px solid rgba(67,20,28,.18);border-radius:30px;padding:6px 12px;font-size:13px;font-weight:700}
+  .card .foot{margin-top:auto;border-top:1px solid rgba(67,20,28,.12);padding-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .card .foot a{font-weight:700;border-bottom:1px solid;margin-right:14px}
+  .card .foot small{font-weight:700;font-size:12px;opacity:.8}
+
+  /* EXPERIENCE */
+  .timeline{border-left:2px solid var(--gold);padding-left:28px}
+  .job{position:relative;margin-bottom:34px}
+  .job::before{content:"";position:absolute;left:-36px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--cream)}
+  .job h3{font-size:24px}
+  .job .when{font-weight:700;font-size:14px;opacity:.7;margin:4px 0 8px}
+  .cv-card{margin-top:40px;border:1px solid rgba(67,20,28,.15);border-radius:12px;padding:30px;background:#fff}
+  .cv-card h3{font-size:26px;margin-bottom:8px}
+  .cv-card p{margin-bottom:18px}
+
+  /* CONTACT */
+  .contact h2{color:var(--gold);max-width:600px}
+  .contact > .container > p{max-width:560px;font-size:18px;margin:20px 0 30px}
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:70px;border-top:1px solid var(--line)}
+  .contact-grid a{padding:24px 0;border-bottom:1px solid var(--line)}
+  .contact-grid small{display:block;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px}
+  .contact-grid b{font-size:15px}
+
+  footer{background:var(--wine-dark);border-top:1px solid var(--line);padding:26px 0;font-size:14px}
+  footer .container{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  footer a{color:var(--gold);font-weight:700}
+
+  /* Blur-in reveal animation */
+  .reveal{opacity:0;filter:blur(8px);transform:translateY(30px);transition:1s ease}
+  .reveal.show{opacity:1;filter:none;transform:none}
+
+  /* MOBILE */
+  @media (max-width:860px){
+    .menu-btn{display:block}
+    .links{display:none;position:absolute;top:76px;left:0;right:0;background:var(--wine);flex-direction:column;padding:20px 24px;border-bottom:1px solid var(--line)}
+    .links.open{display:flex}
+    .hero .container,.two-col,.skills,.projects .intro,.grid{grid-template-columns:1fr}
+    .photo-wrap,.photo-tags{margin:0 auto}
+    .card.wide{grid-template-columns:1fr}
+    .card.wide .num{place-items:start;font-size:70px;padding:30px 26px 10px}
+    .card .body{padding:26px}
+    .skill-grid{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr}
+    section.pad{padding:80px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="container">
+    <a href="#home" class="brand"><div class="logo">KE</div>Kareem Emad</a>
+    <button class="menu-btn" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Based in Egypt, building for mobile, web &amp; backend</div>
+      <h1>Kareem <span>Emad.</span></h1>
+      <div class="role">Senior Flutter Developer &nbsp;/&nbsp; <span>Full-Stack (Flutter + Node.js)</span></div>
+      <p class="lead">Building production-ready Android, iOS, Web and backend solutions with Flutter, Node.js, Firebase and Supabase — with clean architecture and complete product delivery.</p>
+      <div class="actions">
+        <a href="#projects" class="btn btn-gold">Explore my work ↓</a>
+        <a href="#contact" class="btn btn-outline">Start a conversation</a>
+      </div>
+    </div>
+    <div class="reveal">
+      <!-- Put your photo next to this file as photo.jpg -->
+      <div class="photo-wrap"><div class="photo" id="photo" style="background-image:url(photo.jpg)"></div></div>
+      <div class="photo-tags"><span>FLUTTER<br>DEVELOPMENT</span><span>NODE.JS /<br>FULL-STACK</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="light pad" id="about">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal">
+        <h2 class="big">Clean apps.<br>Real products.</h2>
+        <p style="margin-top:24px;font-size:17px">I build dependable mobile apps and the backends that power them — from architecture to the store release.</p>
+      </div>
+      <div class="about reveal">
+        <p>I'm a Senior Flutter Developer and Full-Stack Engineer with 6+ years of Flutter experience, extensive hands-on work with Firebase and Supabase, and around a year of backend development with Node.js and Express.</p>
+        <p>I've shipped apps across e-commerce, education, travel, healthcare, fitness and fintech — using Clean Architecture, BLoC/Cubit, secure authentication, payments, notifications, testing, CI/CD and App Store / Google Play releases.</p>
+        <p>I care about scalable architecture, performance, maintainability and modern AI-assisted engineering workflows.</p>
+      </div>
+    </div>
+
+    <div class="skills reveal">
+      <div>
+        <h3>Technical skills</h3>
+        <p>A practical toolkit for building, shipping, and maintaining modern applications.</p>
+      </div>
+      <ul class="skill-grid" id="skills"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section class="projects pad" id="projects">
+  <div class="container">
+    <div class="intro reveal">
+      <h2 class="big">Selected work</h2>
+      <p>Production apps across commerce, education, travel, healthcare, fitness and fintech. Each entry highlights the systems and integrations behind the product.</p>
+    </div>
+    <div class="grid" id="project-grid"></div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section class="light pad" id="experience">
+  <div class="container two-col">
+    <div class="reveal">
+      <h2 class="big">Experience</h2>
+      <p style="margin-top:24px;font-size:17px">Hands-on delivery across product companies and freelance clients.</p>
+      <div class="cv-card">
+        <h3>Curriculum Vitae</h3>
+        <p>Get the full breakdown of my experience, projects, and technical background in a downloadable PDF.</p>
+        <!-- Put your CV next to this file as cv.pdf -->
+        <a href="cv.pdf" download class="btn btn-gold">Download CV ↓</a>
+      </div>
+    </div>
+    <div class="timeline reveal">
+      <div class="job"><h3>World Biters Company</h3><div class="when">Flutter Developer · 2024 – Present</div><p>Develop and maintain cross-platform Flutter apps across multiple business sectors — architecture, state management, REST APIs, Firebase/Supabase, testing, performance and releases.</p></div>
+      <div class="job"><h3>Trip.com (USA)</h3><div class="when">Flutter Developer</div><p>Worked on Flutter mobile features for a travel platform.</p></div>
+      <div class="job"><h3>Tjar (Saudi Arabia)</h3><div class="when">Flutter Developer</div><p>Built and maintained Flutter app features.</p></div>
+      <div class="job"><h3>Freelance Software Developer</h3><div class="when">Project-based · Upwork</div><p>Flutter and full-stack client solutions: API integrations, dashboards, Firebase/Supabase services and production features.</p></div>
+      <div class="job"><h3>B.Sc. Computers &amp; AI</h3><div class="when">Banha University · 2019 – 2023</div><p>Graduation project: A+.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact pad" id="contact">
+  <div class="container">
+    <h2 class="big reveal">Have a project in mind?</h2>
+    <p class="reveal">I'm open to collaborations, project inquiries, and new opportunities. Tell me what you're building.</p>
+    <a href="mailto:kareememad852@gmail.com" class="btn btn-gold reveal">Email me →</a>
+
+    <div class="contact-grid reveal">
+      <a href="mailto:kareememad852@gmail.com"><small>✉ EMAIL</small><b>kareememad852@gmail.com</b></a>
+      <a href="tel:+201004632660"><small>☎ PHONE</small><b>+20 100 463 2660</b></a>
+      <a><small>⌖ LOCATION</small><b>Banha, Qalyubia, Egypt</b></a>
+      <!-- Replace the # with your real links -->
+      <a href="#" target="_blank"><small>in LINKEDIN</small><b>Kareem Emad</b></a>
+      <a href="https://github.com/kareeeeeeem" target="_blank"><small>⌥ GITHUB</small><b>@kareeeeeeem</b></a>
+      <a href="https://wa.me/201004632660" target="_blank"><small>◎ WHATSAPP</small><b>Message me</b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span>© <span id="year"></span> Kareem Emad. All rights reserved.</span>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+  // ===== EDIT YOUR DATA HERE =====
+  const skills = ["Flutter","Dart","Node.js","Express.js","Firebase","Supabase",
+    "MongoDB","PostgreSQL","REST APIs","Socket.IO","BLoC / Cubit","Riverpod / GetX",
+    "Clean Architecture","Testing & TDD","CI/CD","Git & GitHub","Kotlin / Swift","Payments Integration"];
+
+  // links: [{label:"App Store", url:"https://..."}]  — leave empty if no link
+  const projects = [
+    {title:"matgrk Dashboard", desc:"Enterprise e-commerce management app for store owners and tenants to manage operations, real-time sales tracking and multi-branch inventory.",
+     tags:["Flutter","GetX / BLoC","Dio","Clean Architecture","Multi-tenancy","REST APIs"], links:[{label:"App Store",url:"#"},{label:"Google Play",url:"#"}]},
+    {title:"100 Platform", desc:"Learning management system for Qudurat preparation with course enrollment, video streaming and interactive quizzes.",
+     tags:["Flutter","BLoC","Dio","Flavors","Clean Architecture"], links:[{label:"App Store",url:"#"},{label:"Google Play",url:"#"}]},
+    {title:"triptravel", desc:"Travel video platform and booking system for flights, hotels, car rentals and tour packages with smart search and personalized itineraries.",
+     tags:["Flutter","BLoC","PostgreSQL","Firebase","Stripe / PayPal / MyFatoorah"], links:[{label:"App Store",url:"#"},{label:"Google Play",url:"#"}]},
+    {title:"VIPS", desc:"Full-stack commerce, wallet and rewards platform — Flutter apps, Node.js backend, real-time communication, admin operations and audit logging.",
+     tags:["Flutter","Node.js","Express","Socket.IO","MongoDB","Wallet & Payments"], links:[]},
+    {title:"RCVRY Club", desc:"Athletic recovery booking platform with QR verification, loyalty points, tier progression and localized GCC pricing.",
+     tags:["Flutter","BLoC","REST APIs","QR Verification"], links:[{label:"Live platform",url:"#"}]},
+    {title:"Goda", desc:"Healthcare and doctor appointment app with patient registration, booking, medical profiles, notifications and payments.",
+     tags:["Flutter","BLoC","Firebase","REST APIs"], links:[{label:"Google Play",url:"#"}]},
+    {title:"Gym Management Platform", desc:"Modular gym platform with notifications, QR onboarding, workout management, video exercises and camera-based monitoring.",
+     tags:["Flutter","Clean Architecture","BLoC","Firebase"], links:[{label:"GitHub",url:"#"}]},
+    {title:"Responsive Dashboard", desc:"A responsive dashboard for managing operational data with adaptable layouts across devices.",
+     tags:["Flutter","BLoC","Responsive UI"], links:[{label:"GitHub",url:"#"}]},
+  ];
+  // ===============================
+
+  document.getElementById("skills").innerHTML = skills.map(s => `<li>${s}</li>`).join("");
+
+  document.getElementById("project-grid").innerHTML = projects.map((p, i) => {
+    const wide = i % 3 === 0 || (i === projects.length - 1 && i % 3 === 1); // 1 wide, 2 half...
+    const links = p.links.length
+      ? p.links.map(l => `<a href="${l.url}" target="_blank">${l.label} ↗</a>`).join("")
+      : "<span></span>";
+    return `
+      <div class="card reveal ${wide ? "wide" : ""}">
+        <div class="num">${String(i + 1).padStart(2, "0")}</div>
+        <div class="body">
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          <ul>${p.tags.map(t => `<li>${t}</li>`).join("")}</ul>
+          <div class="foot"><div>${links}</div><small>Source not publicly listed</small></div>
+        </div>
+      </div>`;
+  }).join("");
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // blur-in on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("show")), {threshold: .15});
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // active nav link
+  const navLinks = document.querySelectorAll(".links a");
+  window.addEventListener("scroll", () => {
+    let current = "home";
+    document.querySelectorAll("section[id]").forEach(s => { if (scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+  });
+  navLinks.forEach(a => a.addEventListener("click", () => document.querySelector(".links").classList.remove("open")));
+</script>
+</body>
+</html>
